@@ -2,6 +2,18 @@
 
 A local Windows desktop application for permanently archiving PvP Ledger and REFlex SavedVariables. It provides match history, realm-aware identities, encounter comparisons, captured-player rankings, rated career observations, CSV exports, and complete single-file AI exports. The viewer reads game files without executing Lua or writing to the WoW installation. No online account or upload is required.
 
+## Schema 6/7 import hotfix
+
+PvP Ledger 1.3.2/1.3.3 (schema 6) and 1.3.4 (schema 7) write 48 match columns. The reader now accepts their Date, Time, Rated and Rating change fields, the trailing Epoch and Queue type, and the unchanged 21-column roster layout. Schemas 1 through 5 remain supported. Original CSV lines and unknown trailing fields are retained.
+
+Some records imported by the older reader may contain only a structured fallback. Refresh deliberately skips unchanged files by content hash. To repair these records, explicitly import the original file or its retained snapshot through the existing import command, using the original recording context and timezone:
+
+```powershell
+pvpledger-viewer --archive-dir "D:\Private PvP Profile" import "D:\Private PvP Profile\snapshots\retained-source.lua" --character Examplehero --realm ExampleRealm --timezone UTC
+```
+
+Use your actual recording timezone instead of UTC where applicable. Reimport updates the same match/participant identities, retains raw evidence and observation history, and preserves user overrides; it does not duplicate matches. No archive schema migration, live profile rewrite, executable rebuild, or combat-log feature is part of this hotfix. The reference addon file contains only the protocol headers verified against 1.3.4 source, not its implementation or player data.
+
 ## Install and run
 
 Use Windows and Python 3.12 for source development:

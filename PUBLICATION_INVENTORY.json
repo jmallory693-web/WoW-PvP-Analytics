@@ -3,14 +3,14 @@
   "status": "READY FOR GITHUB REVIEW - explicit source set only",
   "verification_date": "2026-10-25",
   "test_result": {
-    "passed": 330,
+    "passed": 355,
     "failed": 0,
     "skipped": 0,
-    "seconds": 105.18,
+    "seconds": 99.37,
     "full_suite_runs_in_this_task": 1
   },
-  "content_file_count": 91,
-  "total_file_count_including_inventory": 92,
+  "content_file_count": 93,
+  "total_file_count_including_inventory": 94,
   "files": [
     {
       "path": ".gitignore",
@@ -29,8 +29,8 @@
     },
     {
       "path": "README.md",
-      "size": 9440,
-      "sha256": "e495a21110f3f741e1472e87ce8f53f3b55bbe8e464ddf0a99a30476a4fa16dd"
+      "size": 10804,
+      "sha256": "b28450fc1cf9fb3d239bdea40ec2d8154cfc62b911c06a6614efdad1bf1c51bc"
     },
     {
       "path": "packaging/launcher.py",
@@ -184,8 +184,8 @@
     },
     {
       "path": "pvpledger_viewer/schema.py",
-      "size": 3642,
-      "sha256": "10612063744f2a5a3e1fae98a39926e69cca8efb10e96362dc1064e5a642f76b"
+      "size": 4713,
+      "sha256": "421d424216203c60e2aab772a87e28b16d30b171539e6ea6a7957851d7d5dac0"
     },
     {
       "path": "pvpledger_viewer/service.py",
@@ -349,8 +349,8 @@
     },
     {
       "path": "reference/addon/PvPLedger/PvPLedger.lua",
-      "size": 992,
-      "sha256": "0a0d14b8062910c78803770e3081f15579338fa20008ab36d3b6ad537626d634"
+      "size": 1173,
+      "sha256": "0009459d65c83a32ae26458a1f29a7b45c41579e856633b4b4b5fa33a8c742d8"
     },
     {
       "path": "reference/addon_v5/PvPLedger.lua",
@@ -369,8 +369,8 @@
     },
     {
       "path": "tests/fixtures/SYNTHETIC_DATA.md",
-      "size": 1947,
-      "sha256": "76881197b62f0c436b4f95237551a821fcd42a059dc4a40446b3fb037efda6de"
+      "size": 2245,
+      "sha256": "741be4a14508c7d3518911abc30de00fff119680100439fea03dfaa523ed64a6"
     },
     {
       "path": "tests/fixtures/excel/WoW_Match_Log.xlsx",
@@ -398,6 +398,11 @@
       "sha256": "4ddc13960ebf29c5357f3a96c347a7ad156403ea74bee104784a79e63511cee0"
     },
     {
+      "path": "tests/fixtures/v1_3_4/PvPLedger.lua",
+      "size": 1232,
+      "sha256": "baeab058c0befccc97e24001610ad265dfa610a4ffa8062f5d2d8cbbf6463cf0"
+    },
+    {
       "path": "tests/test_career.py",
       "size": 12457,
       "sha256": "da23612faa40ef470a3838dff84192fe4039f182039d0f359e7f5373182cfff8"
@@ -414,8 +419,8 @@
     },
     {
       "path": "tests/test_core.py",
-      "size": 14438,
-      "sha256": "5f27e8721dbbd5c49ae35a9421746609cba222ae186b0c1f978c8cfad04b80ee"
+      "size": 14468,
+      "sha256": "e19dd48a249139aff7f7e1f2f68e34547b0a4c1295a369a234c3b2671961a1e4"
     },
     {
       "path": "tests/test_dual_archive.py",
@@ -453,6 +458,11 @@
       "sha256": "ed500b3ec7a5f79f667f260d1fe0fdc0753ef46d58e10478a1c2a57e0713df86"
     },
     {
+      "path": "tests/test_schema67.py",
+      "size": 10381,
+      "sha256": "7aff37ee784107b4903591ea8d6d83572ac566f4c28d6559a6947301478f4134"
+    },
+    {
       "path": "tests/test_v12.py",
       "size": 17835,
       "sha256": "1b4cd021c5ac8687dcf7e4f2b934da70617d44cc72c6d4b8d0e78ae2b0e289a4"
@@ -488,5 +498,17 @@
     "One-time tools and migration scripts",
     "Credentials and local environment files"
   ],
-  "scope_note": "No GitHub repository creation, history inspection/rewrite, staging, commit, push, upload or executable rebuild performed in this verification task."
+  "scope_note": "Schema 6/7 hotfix only. No live archive modification, executable rebuild, or combat-log analysis.",
+  "schema67_hotfix": {
+    "addon": "PvP Ledger 1.3.4",
+    "schemas": [
+      6,
+      7
+    ],
+    "match_columns": 48,
+    "roster_columns": 21,
+    "relevant_tests_passed": 129,
+    "full_tests_passed": 355,
+    "raw_snapshot_reprocessing": "verified without match or roster duplication; raw history and overrides preserved"
+  }
 }

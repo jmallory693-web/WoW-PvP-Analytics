@@ -31,3 +31,8 @@ The application does not install or load these fixtures for new users. The
 test-only comparison profile is supplied by `tests/conftest.py`; production
 identity defaults contain only empty Me and Unassigned groups. Some test
 function names retain historical wording to preserve regression case identity.
+
+The `v1_3_4` fixture contains one schema-6 and one schema-7 match, with
+four fictional roster entries. It follows the verified 48-column match and
+21-column roster headers, including signed rating changes, Epoch, Queue type,
+Unicode and quoted CSV fields. No live SavedVariables rows were copied.

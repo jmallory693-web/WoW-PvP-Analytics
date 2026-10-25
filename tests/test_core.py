@@ -11,7 +11,7 @@ from pvpledger_viewer.cli import main
 from pvpledger_viewer.discovery import discover
 from pvpledger_viewer.lua_reader import LuaError, loads, sequence
 from pvpledger_viewer.normalize import normalize
-from pvpledger_viewer.schema import MATCH_HEADER, ROSTER_HEADER, parse_row
+from pvpledger_viewer.schema import MATCH_HEADER, CURRENT_MATCH_HEADER, ROSTER_HEADER, parse_row
 
 FIXTURE = Path(__file__).parent / 'fixtures/PvPLedger.lua'
 
@@ -254,7 +254,7 @@ def test_partial_upgrades_without_changing_identity(archive, tmp_path):
 def test_raw_headers_match_authoritative_addon():
     import re
     source = Path('reference/addon/PvPLedger/PvPLedger.lua').read_text(encoding='utf8')
-    for name, expected in [('MATCH_HEADER', MATCH_HEADER), ('ROSTER_HEADER', ROSTER_HEADER)]:
+    for name, expected in [('MATCH_HEADER', CURRENT_MATCH_HEADER), ('ROSTER_HEADER', ROSTER_HEADER)]:
         block = source.split('local ' + name + ' = {', 1)[1].split('}', 1)[0]
         assert re.findall(r'"([^"\n]+)"', block) == expected
 
