@@ -1,0 +1,492 @@
+{
+  "format_version": 1,
+  "status": "READY FOR GITHUB REVIEW - explicit source set only",
+  "verification_date": "2026-10-25",
+  "test_result": {
+    "passed": 330,
+    "failed": 0,
+    "skipped": 0,
+    "seconds": 105.18,
+    "full_suite_runs_in_this_task": 1
+  },
+  "content_file_count": 91,
+  "total_file_count_including_inventory": 92,
+  "files": [
+    {
+      "path": ".gitignore",
+      "size": 711,
+      "sha256": "61f35ba09f1a86c3225c9b083fb5d77ae744a7609900550039ece2c0907e93eb"
+    },
+    {
+      "path": "GITHUB_PRIVACY_VERIFICATION.md",
+      "size": 9039,
+      "sha256": "0d6374755d976d4ed973228db312e93c590baeedb6ac38515949da67af4cc92c"
+    },
+    {
+      "path": "PvPLedgerViewer.spec",
+      "size": 1134,
+      "sha256": "db11ba5fd139e54a6541cba789b4afa05486163e17a0c7e958aa93dc6f701fc8"
+    },
+    {
+      "path": "README.md",
+      "size": 9440,
+      "sha256": "e495a21110f3f741e1472e87ce8f53f3b55bbe8e464ddf0a99a30476a4fa16dd"
+    },
+    {
+      "path": "packaging/launcher.py",
+      "size": 80,
+      "sha256": "915dcfc40838b7008a4ecbb6423d50d0ef5c81ebcfa39309674129225aa06cb7"
+    },
+    {
+      "path": "pvpledger_viewer/__init__.py",
+      "size": 59,
+      "sha256": "66787de0aa13a38ddc70672cecbce39ad7dbbefcf38fa2a53da31f2b0b30fda4"
+    },
+    {
+      "path": "pvpledger_viewer/__main__.py",
+      "size": 48,
+      "sha256": "935a1c1166b0c1ea35a82256345000bf2c73ded718d77773bc27a71ecce28f7d"
+    },
+    {
+      "path": "pvpledger_viewer/archive.py",
+      "size": 19650,
+      "sha256": "98bd3a00713fae3cf767a7a906730536da97a5e7732dd2063edeb62e427f6022"
+    },
+    {
+      "path": "pvpledger_viewer/background.py",
+      "size": 1627,
+      "sha256": "de81ab9ff69cc8f12ae42b31277e9af86f56d7271668ff7dda5ba284c71a1679"
+    },
+    {
+      "path": "pvpledger_viewer/calendar_core.py",
+      "size": 1592,
+      "sha256": "451d4d8a7de0709520b9f621f500bfb23121d5b14c9d9fb79e7d501246c45a40"
+    },
+    {
+      "path": "pvpledger_viewer/career.py",
+      "size": 22761,
+      "sha256": "3c004c1ccd3b95c5ac352ce717508d096685d7f4d7a027a67c96bf65a9277173"
+    },
+    {
+      "path": "pvpledger_viewer/career_sources.py",
+      "size": 6686,
+      "sha256": "73d23d19f01f7a1ef7e7d2cd791461d793c3e850690d8d713809eddddcd2c7b9"
+    },
+    {
+      "path": "pvpledger_viewer/charts.py",
+      "size": 4449,
+      "sha256": "f07cc51a855fe38f54916ca0d8cdf23dc6c47bc75d1cc0a3937cdd2fc0f14d15"
+    },
+    {
+      "path": "pvpledger_viewer/cli.py",
+      "size": 6903,
+      "sha256": "3bb44b5663cfd81fb17a48905045f5bfd32d336d091ea254f857dfcd737c5268"
+    },
+    {
+      "path": "pvpledger_viewer/comparison_charts.py",
+      "size": 3195,
+      "sha256": "7d9debde1634c74810fe19fd5f3b51f195be11d486c4c11ced3266b53ba2fb82"
+    },
+    {
+      "path": "pvpledger_viewer/comparisons.py",
+      "size": 12064,
+      "sha256": "74e90761fd615c798ca91c5b4f244de3578d8b68dbd2f321cbef947515d75422"
+    },
+    {
+      "path": "pvpledger_viewer/discovery.py",
+      "size": 543,
+      "sha256": "47532f64d55663ee03b1c322b58389791b2bbc99f63a7493db0a0ded8dc96422"
+    },
+    {
+      "path": "pvpledger_viewer/dual_archive.py",
+      "size": 18737,
+      "sha256": "08829d8c364027ebec1d3b155a4a4a5fa1e239db013bc1c21035665f411bbc5d"
+    },
+    {
+      "path": "pvpledger_viewer/excel_reader.py",
+      "size": 10588,
+      "sha256": "82ac0f52818f7e93dc4247e8405a5ab888521fa90f4ba7401d11f60a7f3c602f"
+    },
+    {
+      "path": "pvpledger_viewer/export.py",
+      "size": 9285,
+      "sha256": "a7c9b1e75712693bd45c473a5665c3ae232c6c1f47f6b4722915341b98a102a7"
+    },
+    {
+      "path": "pvpledger_viewer/full_export.py",
+      "size": 21695,
+      "sha256": "cae002193d43162a9e7dd798758b7541fc3416c55b6e470f44e6f44c3517b168"
+    },
+    {
+      "path": "pvpledger_viewer/gui.py",
+      "size": 135,
+      "sha256": "f31594ccb31bc52903b5dc2dfc3e6c0a384426f8f7b8f621563e32c8d0c49719"
+    },
+    {
+      "path": "pvpledger_viewer/identity.py",
+      "size": 8065,
+      "sha256": "ad8c036a3a465ce08e15ae8170ac5966e518601ca2f085f0e00d636e6dca28c4"
+    },
+    {
+      "path": "pvpledger_viewer/lua_reader.py",
+      "size": 5579,
+      "sha256": "8c4c0f6694fd924f5dcecddcccf7de842e6586357f20f64c5d7a2bb69fcd8570"
+    },
+    {
+      "path": "pvpledger_viewer/metric_registry.py",
+      "size": 3000,
+      "sha256": "d68abaf25d03f993f583167ec09a862d61ae265166cc50a63a7c50207ac2b5f5"
+    },
+    {
+      "path": "pvpledger_viewer/metrics.py",
+      "size": 10993,
+      "sha256": "818f8c89d14d67f20879bba4fad101094b2879e19ec8c767b8a11f014c2a709c"
+    },
+    {
+      "path": "pvpledger_viewer/normalize.py",
+      "size": 7138,
+      "sha256": "005659902d7f8b8c33eeec352c00ef2724bfaee949d8e43bcf72cb57ba1fe63d"
+    },
+    {
+      "path": "pvpledger_viewer/player_index.py",
+      "size": 21081,
+      "sha256": "99c6299b71cbd2c639ad7c126848fe478a1707e207b6a11086748de9cb3a86a9"
+    },
+    {
+      "path": "pvpledger_viewer/profile.py",
+      "size": 4505,
+      "sha256": "145a08ab0a70ef641ce31eb362c9055074515258522a1fbcd6d99736ca4633cb"
+    },
+    {
+      "path": "pvpledger_viewer/rankings.py",
+      "size": 4856,
+      "sha256": "d76790f033a22de9d45aa169fc670ec476b55429af6dd29595628d98f2b327e6"
+    },
+    {
+      "path": "pvpledger_viewer/rated_charts.py",
+      "size": 1069,
+      "sha256": "f289ca073a852415192866765749f6b42c18ea2bb9dafd826c6c7089f650d551"
+    },
+    {
+      "path": "pvpledger_viewer/reconcile.py",
+      "size": 17435,
+      "sha256": "9ff1b8f1718b52f70bb05adb13ce8cc549b6ab23d21a0619c3e1574151ed20e3"
+    },
+    {
+      "path": "pvpledger_viewer/reflex_reader.py",
+      "size": 8745,
+      "sha256": "b719bf98fc61500d689d3c9752ea65c0ee0b20dbb50f964e79255fbac069039b"
+    },
+    {
+      "path": "pvpledger_viewer/runtime.py",
+      "size": 408,
+      "sha256": "2fd8c593bebca55b9b6289da84ebdf5c8390665791e81cdeb625b3dd0857f915"
+    },
+    {
+      "path": "pvpledger_viewer/schema.py",
+      "size": 3642,
+      "sha256": "10612063744f2a5a3e1fae98a39926e69cca8efb10e96362dc1064e5a642f76b"
+    },
+    {
+      "path": "pvpledger_viewer/service.py",
+      "size": 17540,
+      "sha256": "f7a9b0c1bdbb14a6702a41281490256b7b337b75d317dade38d5693e3f59ad1c"
+    },
+    {
+      "path": "pvpledger_viewer/settings.py",
+      "size": 6259,
+      "sha256": "e99cfe29b9c6883d29eef517aa9a23fc6710f947bca69d57f417454cdc62f9bd"
+    },
+    {
+      "path": "pvpledger_viewer/setup.py",
+      "size": 3983,
+      "sha256": "9e1417e401b43b568a15aec7610c7f4994f2f31ae8e212bac465cf09eb06e975"
+    },
+    {
+      "path": "pvpledger_viewer/supplemental.py",
+      "size": 20754,
+      "sha256": "f17f5efdae72dd78afe080f8cfed422b6ea64f609cc6d77c671c137b85b31909"
+    },
+    {
+      "path": "pvpledger_viewer/sync.py",
+      "size": 6490,
+      "sha256": "9f71ae99542219f41a870628fdb9dce9cc572ff971004f1068b966c25b4b8664"
+    },
+    {
+      "path": "pvpledger_viewer/trends.py",
+      "size": 4812,
+      "sha256": "f38a3cdaebd32532ae4606718a0271b606f212f2ffea4d585c338e0dc1ec6da7"
+    },
+    {
+      "path": "pvpledger_viewer/ui/__init__.py",
+      "size": 78,
+      "sha256": "bdc8998707e9b625c26afc10d837cebe2c1b683da74906f9f93868ae09b0bbc5"
+    },
+    {
+      "path": "pvpledger_viewer/ui/advanced_comparison.py",
+      "size": 12251,
+      "sha256": "23336cbada207befa75d66e0306e0f343d311ef7cc1d03d8a2b433dc28d55e93"
+    },
+    {
+      "path": "pvpledger_viewer/ui/ai_export.py",
+      "size": 4745,
+      "sha256": "f9657e622e70e0307d7fca3e6aa258448e6c54d4fd9d9bddd12e70eeaed4336d"
+    },
+    {
+      "path": "pvpledger_viewer/ui/allies.py",
+      "size": 4707,
+      "sha256": "09c5ab23ed4583eb34b9d3a7b1dfb16bafd14992dffc06cd0a70345f64ec5499"
+    },
+    {
+      "path": "pvpledger_viewer/ui/app.py",
+      "size": 20175,
+      "sha256": "7cee5ab54b9d0178edea4778c2db7908f41610acaab55044d36d79e6bbf98b8c"
+    },
+    {
+      "path": "pvpledger_viewer/ui/calendar.py",
+      "size": 5495,
+      "sha256": "67cebb5fabda042c0f15b45a7fb607fdce460d0230ca17f929de792c17afad63"
+    },
+    {
+      "path": "pvpledger_viewer/ui/character_search.py",
+      "size": 2573,
+      "sha256": "3baf444434c057a66c851665527e5c71df64743efeda290fc20d1d5fd8548351"
+    },
+    {
+      "path": "pvpledger_viewer/ui/comparison.py",
+      "size": 4452,
+      "sha256": "bf92478d297a78a7b5c9a0972c9302e4477b630170e7fa42cf46acfadb6efe21"
+    },
+    {
+      "path": "pvpledger_viewer/ui/comparison_dialog.py",
+      "size": 8880,
+      "sha256": "0bed34db885f2c32078770af0b91f4a476b6723c288527149ce185a19e542852"
+    },
+    {
+      "path": "pvpledger_viewer/ui/diagnostics.py",
+      "size": 3018,
+      "sha256": "aaa3514b08bbeb8126626204bb6ddae774e1dba8dd9315adcecf0a147d433f45"
+    },
+    {
+      "path": "pvpledger_viewer/ui/duplicates.py",
+      "size": 5017,
+      "sha256": "14d93fd4d3362995d0aec17b1067b44fef977c5c13f7b94ee5d093b30a8f2f52"
+    },
+    {
+      "path": "pvpledger_viewer/ui/history.py",
+      "size": 1848,
+      "sha256": "8622b8a7f48a785a5adf63231cfce456a36940a924bc1ab01569b76c5c37185a"
+    },
+    {
+      "path": "pvpledger_viewer/ui/home.py",
+      "size": 3684,
+      "sha256": "ba46e64274c7c38c1d4489f1c8b23aefe9475346ef47ffe0a6d5baf6e170ed77"
+    },
+    {
+      "path": "pvpledger_viewer/ui/people.py",
+      "size": 5591,
+      "sha256": "6cd6800a18ddf9420fdf359c405fcf785a5a313a57234c65e6acd95fce185068"
+    },
+    {
+      "path": "pvpledger_viewer/ui/players.py",
+      "size": 10594,
+      "sha256": "d61db759c0b613947abca9be2894a45a9f4e89970972ab32162a47c13ca0d948"
+    },
+    {
+      "path": "pvpledger_viewer/ui/rated.py",
+      "size": 17803,
+      "sha256": "3396c0d6d890e1b6333b5d137d8ee916bfc395f636eb5a2fd2ad833e03d62124"
+    },
+    {
+      "path": "pvpledger_viewer/ui/reconciliation.py",
+      "size": 15364,
+      "sha256": "70b70c4c63a0909ea739583e646936e824813d06d82565124c072cbde1edac8d"
+    },
+    {
+      "path": "pvpledger_viewer/ui/scoreboard.py",
+      "size": 9466,
+      "sha256": "82818529dbf6e0a58517f8e643007c906ecd15724adb5b7fa6ca6965e2eff637"
+    },
+    {
+      "path": "pvpledger_viewer/ui/settings.py",
+      "size": 8336,
+      "sha256": "802d7bfe8359118387eac205278fc9654fd585cf67f6b076e78eab9748ee325e"
+    },
+    {
+      "path": "pvpledger_viewer/ui/setup.py",
+      "size": 10728,
+      "sha256": "6d5bd6745700746f0e0b00ea3d08671e283a84e15fc0b5a90e444c4399d2a4ca"
+    },
+    {
+      "path": "pvpledger_viewer/ui/theme.py",
+      "size": 3686,
+      "sha256": "bd3412906d62718acb0121524c557ee696321bcca2f5a53db22f1b8cd2d6ab7d"
+    },
+    {
+      "path": "pvpledger_viewer/ui/trends.py",
+      "size": 12044,
+      "sha256": "13f19e72204c442dc731ac7f32de4be99563c542bb0115cf3905c36e92a35977"
+    },
+    {
+      "path": "pvpledger_viewer/ui/widgets.py",
+      "size": 5569,
+      "sha256": "fe63baf2df5bf991df920fc0ff3118d64bb9f4a5d5e9fa8eb82977494ea18bef"
+    },
+    {
+      "path": "pvpledger_viewer/upgrade.py",
+      "size": 1672,
+      "sha256": "92873cbce440f024f5dac2e58ac5ca5adf32edbc0ec4c2cdb59b39383ec65207"
+    },
+    {
+      "path": "pvpledger_viewer/viewmodels.py",
+      "size": 5488,
+      "sha256": "0982515aae0bd005f8c301801b9b870b3ec04582a22c0fc39c98e59fa92604c1"
+    },
+    {
+      "path": "pyproject.toml",
+      "size": 697,
+      "sha256": "8ea8dc355d10c202e6c5b9a8b7bc311b7b1f0b2b09a1946efe4099552e230a32"
+    },
+    {
+      "path": "reference/addon/PvPLedger/PvPLedger.lua",
+      "size": 992,
+      "sha256": "0a0d14b8062910c78803770e3081f15579338fa20008ab36d3b6ad537626d634"
+    },
+    {
+      "path": "reference/addon_v5/PvPLedger.lua",
+      "size": 1000,
+      "sha256": "0ee9926bf43f83efcb44926dc0db297ca0cd7e3f4a97f02246638df74c50f087"
+    },
+    {
+      "path": "tests/conftest.py",
+      "size": 683,
+      "sha256": "57a15c247ac930aad07b034500161043fc9af182fa08ca672a4525d4bc303a46"
+    },
+    {
+      "path": "tests/fixtures/PvPLedger.lua",
+      "size": 77381,
+      "sha256": "912397b69689ba4aa18879f508157e4d8c2369e4a574d12066f0bdb5b7f9a91f"
+    },
+    {
+      "path": "tests/fixtures/SYNTHETIC_DATA.md",
+      "size": 1947,
+      "sha256": "76881197b62f0c436b4f95237551a821fcd42a059dc4a40446b3fb037efda6de"
+    },
+    {
+      "path": "tests/fixtures/excel/WoW_Match_Log.xlsx",
+      "size": 85272,
+      "sha256": "1f09f48b217569b0fda542a4c1b51712627d980b50543632940638d310facaf9"
+    },
+    {
+      "path": "tests/fixtures/v14/REFlex.lua",
+      "size": 86970,
+      "sha256": "2d99aa77ee2dc39d28085d4aea842dcbf619579668de067c331928e47c213f66"
+    },
+    {
+      "path": "tests/fixtures/v1_1/PvPLedger.lua",
+      "size": 122137,
+      "sha256": "c583369403b0ee67d28a778847c5ac66029dc57f3a39efd70c7dbbbb083d73e8"
+    },
+    {
+      "path": "tests/fixtures/v1_1/REFlex.lua",
+      "size": 74827,
+      "sha256": "33cd336e2859259205fe9ea24bf046cbaa634d53fced6529456b7b955496e88e"
+    },
+    {
+      "path": "tests/fixtures/v1_3/PvPLedger.lua",
+      "size": 141949,
+      "sha256": "4ddc13960ebf29c5357f3a96c347a7ad156403ea74bee104784a79e63511cee0"
+    },
+    {
+      "path": "tests/test_career.py",
+      "size": 12457,
+      "sha256": "da23612faa40ef470a3838dff84192fe4039f182039d0f359e7f5373182cfff8"
+    },
+    {
+      "path": "tests/test_career_gui.py",
+      "size": 5086,
+      "sha256": "6fab354da9c713eca774f2cf00c1a11c845bb5d874d7eac40b2dec91f113e662"
+    },
+    {
+      "path": "tests/test_chart_dialog.py",
+      "size": 7440,
+      "sha256": "38a6ad51f0dd57db5d9572a1a17f502f20e1c9f1514f244fe45f9348e9e08efa"
+    },
+    {
+      "path": "tests/test_core.py",
+      "size": 14438,
+      "sha256": "5f27e8721dbbd5c49ae35a9421746609cba222ae186b0c1f978c8cfad04b80ee"
+    },
+    {
+      "path": "tests/test_dual_archive.py",
+      "size": 17770,
+      "sha256": "2cc9074d48f17ac590aaacd541c660faa3120e293323e0c35c7186ce3546ba2f"
+    },
+    {
+      "path": "tests/test_excel.py",
+      "size": 18232,
+      "sha256": "ae190b9242a0e0bf0b218ede4223cb92501ec0b738c7a8b6e6d527168316e544"
+    },
+    {
+      "path": "tests/test_excel_gui.py",
+      "size": 3692,
+      "sha256": "63c4c1a816a27e0db6060b4e93edf316a5216beac7bd426ae0539338fd117221"
+    },
+    {
+      "path": "tests/test_phase2.py",
+      "size": 21018,
+      "sha256": "baeb5f64d47ac39ea96eb201d7d75ddf107bd8d2b3bb12452af49888396acd85"
+    },
+    {
+      "path": "tests/test_phase3.py",
+      "size": 15592,
+      "sha256": "e2250331f69a22e20c3fc2e070a275f41326a779e29a5744c42e2d91d2f74614"
+    },
+    {
+      "path": "tests/test_phase4.py",
+      "size": 9768,
+      "sha256": "3d0a89cc17fc4482cdfe8772cd2e82fffdb15186e2e15311fcc88460af693144"
+    },
+    {
+      "path": "tests/test_privacy_setup.py",
+      "size": 9173,
+      "sha256": "ed500b3ec7a5f79f667f260d1fe0fdc0753ef46d58e10478a1c2a57e0713df86"
+    },
+    {
+      "path": "tests/test_v12.py",
+      "size": 17835,
+      "sha256": "1b4cd021c5ac8687dcf7e4f2b934da70617d44cc72c6d4b8d0e78ae2b0e289a4"
+    },
+    {
+      "path": "tests/test_v13.py",
+      "size": 19322,
+      "sha256": "ada562911eaa674394978b8d05a242344cb156a710829584df6547ebb899d8b6"
+    },
+    {
+      "path": "tests/test_v13_gui.py",
+      "size": 4363,
+      "sha256": "1c64deb894840da8207779ddc8a427ca292abecf3615d5e8f0bfab2185d9d9d9"
+    }
+  ],
+  "inventory_self": {
+    "path": "PUBLICATION_INVENTORY.json",
+    "sha256": null,
+    "reason": "Recursive self-digest intentionally omitted"
+  },
+  "exclusion_rule": "Exclude every file not listed in files or inventory_self; do not copy the existing working directory or .git.",
+  "excluded_categories": [
+    "Existing Git metadata and history",
+    "Private profiles, settings, identities and databases",
+    "Original addon records and snapshots",
+    "Real Excel workbooks",
+    "Generated AI/CSV exports and private reports",
+    "Screenshots and recordings",
+    "Builds and executables",
+    "Dependency environments and caches",
+    "Local verification logs and results",
+    "All .test-tmp* and .tk* output directories, including permission-protected folders",
+    "One-time tools and migration scripts",
+    "Credentials and local environment files"
+  ],
+  "scope_note": "No GitHub repository creation, history inspection/rewrite, staging, commit, push, upload or executable rebuild performed in this verification task."
+}

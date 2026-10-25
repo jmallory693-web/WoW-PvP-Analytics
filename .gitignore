@@ -1,0 +1,48 @@
+﻿# Python environments and caches
+.deps/
+.python312/
+.python312-tk/
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.test-tmp*/
+.tk*/
+node_modules/
+# Generated packages and build caches
+/build/
+/dist/
+*.exe
+*.log
+# Credentials; templates require explicit review
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+credentials.json
+token.json
+# Private profiles and generated evidence
+/verification/
+/exports/
+/backups/
+/snapshots/
+/profiles/
+/private/
+/logs/
+**/SavedVariables/
+people.json
+settings.json
+archive-location.json
+*.sqlite
+*.sqlite-*
+*.sqlite3
+*.sqlite3-*
+*.db
+*.db-*
+*.lua.bak
+.privacy-workspace.json
+privacy-*-local.*
+# JSON, Lua, CSV and Excel synthetic fixtures are deliberately reviewable.

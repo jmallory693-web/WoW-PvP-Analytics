@@ -1,0 +1,26 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "pvpledger-viewer"
+version = "1.4.0"
+description = "PvP Ledger archive, identities, performance analytics and CSV exports"
+requires-python = ">=3.12"
+dependencies = ["matplotlib>=3.10,<4", "tzdata>=2025.1", "openpyxl>=3.1,<4"]
+
+[project.optional-dependencies]
+test = ["pytest>=8"]
+build = ["pyinstaller>=6.22,<7"]
+
+[project.scripts]
+pvpledger-viewer = "pvpledger_viewer.cli:main"
+
+[project.gui-scripts]
+pvpledger-desktop = "pvpledger_viewer.ui.app:main"
+
+[tool.setuptools.packages.find]
+include = ["pvpledger_viewer*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
