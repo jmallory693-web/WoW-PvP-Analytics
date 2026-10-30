@@ -1,5 +1,6 @@
 import tkinter as tk
 from tkinter import ttk, simpledialog
+from .theme import palette
 
 
 class PeopleDialog(tk.Toplevel):
@@ -18,7 +19,7 @@ class PeopleDialog(tk.Toplevel):
             ttk.Label(body, text=label).pack(anchor='w', pady=(7, 0)); ttk.Entry(body, textvariable=var).pack(fill='x')
         ttk.Button(body, text='Save person name', command=self.save_person).pack(anchor='e', pady=8)
         ttk.Button(body, text='Add person / friend…', command=self.add_person).pack(anchor='w')
-        self.entries = tk.Listbox(body, height=7, exportselection=False, bg='#0e1928', fg='#e7edf5', selectbackground='#304460'); self.entries.pack(fill='both', expand=True)
+        self.entries = tk.Listbox(body, height=7, exportselection=False, bg=palette(self)['FIELD'], fg=palette(self)['TEXT'], selectbackground=palette(self)['LIST_SELECTION_BG']); self.entries.pack(fill='both', expand=True)
         self.entries.bind('<<ListboxSelect>>', self.select_character)
         row = ttk.Frame(body); row.pack(fill='x', pady=8)
         self.character, self.realm = tk.StringVar(), tk.StringVar()
@@ -28,7 +29,7 @@ class PeopleDialog(tk.Toplevel):
         ttk.Button(buttons, text='Assign / reassign to person', command=self.assign).pack(side='left')
         ttk.Button(buttons, text='Unassign selected', command=lambda: self.change('unassign')).pack(side='left', padx=5)
         ttk.Button(buttons, text='Remove association', command=lambda: self.change('remove')).pack(side='left')
-        self.message = ttk.Label(body, wraplength=610, foreground='#f28b94'); self.message.pack(fill='x', pady=8)
+        self.message = ttk.Label(body, wraplength=610, foreground=palette(self)['RED']); self.message.pack(fill='x', pady=8)
         ttk.Button(body, text='Close', command=self.destroy).pack(anchor='e')
         self.person.set(next(iter(self.labels.values()))); self.load_person()
         self.bind('<Escape>', lambda e: self.destroy()); self.after_idle(self.focus_set)

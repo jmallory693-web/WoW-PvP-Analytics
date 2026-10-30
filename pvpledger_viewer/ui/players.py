@@ -4,6 +4,7 @@ from tkinter import ttk
 from .widgets import Table, page_heading
 from ..metric_registry import METRICS
 from ..rankings import SCOPES
+from .theme import palette
 
 
 class RankingWindow(tk.Toplevel):
@@ -82,10 +83,7 @@ class PlayersView(ttk.Frame):
             row=table.selected()
             if not row:return
             def work():
-                from ..sync import sidecar
-                db=sidecar(self.app.service.home)
-                try:return [json.loads(r[0]) for r in db.execute('SELECT data FROM sightings WHERE event_id=? AND player_key=?',(row['event_id'],row['player_key']))]
-                finally:db.close()
+                return self.app.service.player_evidence(row['event_id'],row['player_key'])
             def show(records):
                 child=tk.Toplevel(dialog);child.title('All source sightings and available fields');child.geometry('1000x600')
                 text=tk.Text(child,wrap='word');scroll=ttk.Scrollbar(child,command=text.yview);scroll.pack(side='right',fill='y');text.configure(yscrollcommand=scroll.set);text.pack(fill='both',expand=True)
@@ -102,10 +100,7 @@ class PlayersView(ttk.Frame):
             text=tk.Text(dialog,wrap='word');scroll=ttk.Scrollbar(dialog,command=text.yview);scroll.pack(side='right',fill='y');text.configure(yscrollcommand=scroll.set);text.pack(fill='both',expand=True)
             text.insert('end',json.dumps(rows,ensure_ascii=False,indent=2));text.configure(state='disabled')
         def work():
-            from ..sync import sidecar
-            db=sidecar(self.app.service.home)
-            try:return [json.loads(r[0]) for r in db.execute('SELECT data FROM unresolved')]
-            finally:db.close()
+            return self.app.service.unresolved_records()
         self.app.run_job('Reading unresolved records…',work,done)
 
     def destroy(self):
@@ -121,7 +116,7 @@ class ArchiveStatusView(ttk.Frame):
         ttk.Button(bar,text='Sync Now',command=app.refresh).pack(side='left')
         ttk.Button(bar,text='Refresh status',command=lambda:self.render(None)).pack(side='left',padx=8)
         self.next=ttk.Label(bar);self.next.pack(side='right')
-        self.text=tk.Text(self,wrap='word',bg='#0e1928',fg='#e7edf5');scroll=ttk.Scrollbar(self,command=self.text.yview);scroll.pack(side='right',fill='y');self.text.configure(yscrollcommand=scroll.set);self.text.pack(fill='both',expand=True,pady=10)
+        self.text=tk.Text(self,wrap='word',bg=palette(self)['FIELD'],fg=palette(self)['TEXT']);scroll=ttk.Scrollbar(self,command=self.text.yview);scroll.pack(side='right',fill='y');self.text.configure(yscrollcommand=scroll.set);self.text.pack(fill='both',expand=True,pady=10)
     def render(self,payload):
         schedule=getattr(self.app,'sync_schedule',None)
         if schedule:self.next.configure(text=f'Next check in {max(0,int(schedule.next_due-schedule.clock()))} seconds')

@@ -2,6 +2,7 @@ import queue
 import threading
 import tkinter as tk
 from tkinter import ttk,filedialog
+from .theme import palette
 
 
 class AIDumpDialog(tk.Toplevel):
@@ -16,7 +17,7 @@ class AIDumpDialog(tk.Toplevel):
         self.query=ttk.Entry(search);self.query.pack(side='left',fill='x',expand=True)
         ttk.Button(search,text='Find players',command=self.search).pack(side='right')
         ttk.Label(body,text='Optional: search and Ctrl-click participants for filtered scopes. Full Archive ignores this list.').pack(anchor='w',pady=4)
-        self.players=tk.Listbox(body,height=8,selectmode='extended',exportselection=False,bg='#0e1928',fg='#e7edf5');self.players.pack(fill='both',expand=True)
+        self.players=tk.Listbox(body,height=8,selectmode='extended',exportselection=False,bg=palette(self)['FIELD'],fg=palette(self)['TEXT']);self.players.pack(fill='both',expand=True)
         self.entries=[];self.stop=threading.Event();self.messages=queue.Queue();self.busy=False
         self.cancel_event=self.stop
         self.status=ttk.Label(body,wraplength=740);self.status.pack(fill='x',pady=10)

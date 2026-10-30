@@ -1,6 +1,7 @@
 import tkinter as tk
 from tkinter import ttk
 from ..comparisons import suggestions
+from .theme import palette
 
 
 class CharacterSearch(ttk.Frame):
@@ -10,7 +11,7 @@ class CharacterSearch(ttk.Frame):
         self.label = ttk.Label(self, text=label); self.label.pack(anchor='w')
         self.text = tk.StringVar()
         self.entry = ttk.Entry(self, textvariable=self.text); self.entry.pack(fill='x')
-        self.list = tk.Listbox(self, height=3, exportselection=False, bg='#0e1928', fg='#e7edf5', selectbackground='#304460')
+        self.list = tk.Listbox(self, height=3, exportselection=False, bg=palette(self)['FIELD'], fg=palette(self)['TEXT'], selectbackground=palette(self)['LIST_SELECTION_BG'])
         self.list.pack(fill='x')
         self.entries, self.hits, self.selected = [], [], None
         self.trace_id = self.text.trace_add('write', self.changed)

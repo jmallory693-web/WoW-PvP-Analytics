@@ -30,6 +30,33 @@ def profile(tmp_path):
     return home
 
 
+def test_player_evidence_and_unresolved_service_reads(tmp_path):
+    from concurrent.futures import ThreadPoolExecutor
+    service = DesktopService(tmp_path)
+    assert service.player_evidence('event-a', 'player-a') == []
+    assert service.unresolved_records() == []
+    evidence = [{'revision': 1, 'note': 'Fayë'}, {'revision': 2, 'damage': None}]
+    unresolved = [{'reason': 'missing identity'}, {'raw': 'retained source'}]
+    db = sidecar(tmp_path)
+    try:
+        for identity, event, player, data in [
+            ('a', 'event-a', 'player-a', evidence[0]),
+            ('b', 'event-a', 'other-player', {'excluded': 'player'}),
+            ('c', 'other-event', 'player-a', {'excluded': 'event'}),
+            ('d', 'event-a', 'player-a', evidence[1]),
+        ]:
+            db.execute('INSERT INTO sightings VALUES (?,?,?,?)',
+                       (identity, player, event, json.dumps(data)))
+        for index, data in enumerate(unresolved):
+            db.execute('INSERT INTO unresolved VALUES (?,?)', (str(index), json.dumps(data)))
+        db.commit()
+    finally:
+        db.close()
+    with ThreadPoolExecutor(max_workers=1) as worker:
+        assert worker.submit(service.player_evidence, 'event-a', 'player-a').result() == evidence
+        assert worker.submit(service.unresolved_records).result() == unresolved
+
+
 def test_verified_real_schema5_epoch_and_retained_trailing_fields():
     doc=loads(V5.read_text(encoding='utf8'))['PvPLedgerDB']
     raw=sequence(doc['matchCSV'])[0];issues=[];m=parse_row(raw,'match',issues)

@@ -5,6 +5,7 @@ import tkinter as tk
 from tkinter import ttk,filedialog
 from .widgets import Table,ScrollFrame,page_heading
 from ..career_sources import BRACKETS
+from .theme import chart_palette
 
 
 class RatingForm(tk.Toplevel):
@@ -63,7 +64,7 @@ class RatedChart(tk.Toplevel):
         try:
             from ..rated_charts import figure
             from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
-            self.figure=figure(series);self.canvas=FigureCanvasTkAgg(self.figure,master=self.scroll.body);widget=self.canvas.get_tk_widget();widget.configure(height=max(330,len(series)*280));widget.pack(fill='both',expand=True);self.canvas.draw()
+            self.figure=figure(series,palette=chart_palette(self));self.canvas=FigureCanvasTkAgg(self.figure,master=self.scroll.body);widget=self.canvas.get_tk_widget();widget.configure(height=max(330,len(series)*280));widget.pack(fill='both',expand=True);self.canvas.draw()
             self.scroll.canvas.bind('<Configure>',self.resize,add='+')
         except Exception as exc:self.status.configure(text='Chart failed: '+str(exc))
         self.protocol('WM_DELETE_WINDOW',self.close)

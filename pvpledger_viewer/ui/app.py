@@ -8,7 +8,7 @@ from ..background import BackgroundTasks
 from ..metrics import Filters
 from ..service import DesktopService, MATCH_TYPES
 from ..settings import SettingsStore, VIEWS
-from .theme import apply_theme, BG, GOLD, MUTED, RED
+from .theme import apply_theme, palette
 from .home import HomeView
 from .history import HistoryView
 from .comparison import ComparisonView
@@ -48,7 +48,7 @@ class LedgerApp:
         self.view_name = self.config['view']
         root.title('PvP Ledger Viewer')
         root.geometry(self.config['geometry']); root.minsize(1100, 650)
-        apply_theme(root)
+        apply_theme(root, self.config['theme'])
         self._build()
         root.protocol('WM_DELETE_WINDOW', self.close)
         root.bind('<F5>', lambda e: self.refresh())
@@ -63,16 +63,23 @@ class LedgerApp:
             self.root.after(100, self.startup)
 
     def _build(self):
-        sidebar = ttk.Frame(self.root, padding=(12, 18)); sidebar.pack(side='left', fill='y')
+        sidebar = ttk.Frame(self.root, padding=(12, 14), style='Sidebar.TFrame'); sidebar.pack(side='left', fill='y')
         sidebar.configure(width=190); sidebar.pack_propagate(False)
-        ttk.Label(sidebar, text='PVP  LEDGER', style='Gold.TLabel').pack(anchor='w', padx=14)
-        ttk.Label(sidebar, text='YOUR MATCHES.\nYOUR HISTORY.', style='Muted.TLabel', justify='left').pack(anchor='w', padx=14, pady=(8, 16))
+        ttk.Label(sidebar, text='PVP  LEDGER', style='SidebarGold.TLabel').pack(anchor='w', padx=14)
+        ttk.Label(sidebar, text='YOUR MATCHES.\nYOUR HISTORY.', style='SidebarMuted.TLabel', justify='left').pack(anchor='w', padx=14, pady=(8, 8))
         self.nav = {}
-        for title in VIEWS:
-            button = ttk.Button(sidebar, text=title, style='Nav.TButton', command=lambda name=title: self.show_view(name))
-            button.pack(fill='x', pady=1); self.nav[title] = button
+        for heading, titles in (
+            ('Play', ('Home', 'Match History', 'Rated PvP', 'Trends')),
+            ('People', ('Allies', 'All Players', 'Character Comparison')),
+            ('Archive', ('Archive Status', 'Diagnostics', 'Duplicate Review')),
+        ):
+            group = ttk.Frame(sidebar, style='Sidebar.TFrame'); group.pack(fill='x', pady=(8, 0))
+            ttk.Label(group, text=heading, style='SidebarMuted.TLabel').pack(anchor='w', padx=14, pady=(0, 3))
+            for title in titles:
+                button = ttk.Button(group, text=title, style='Sidebar.Nav.TButton', command=lambda name=title: self.show_view(name))
+                button.pack(fill='x', pady=1); self.nav[title] = button
         ttk.Button(sidebar, text='Settings', command=self.open_settings).pack(side='bottom', fill='x', pady=(10, 0))
-        self.archive_label = ttk.Label(sidebar, text='LOCAL ARCHIVE\nLoading…', style='Muted.TLabel', wraplength=165)
+        self.archive_label = ttk.Label(sidebar, text='LOCAL ARCHIVE\nLoading…', style='SidebarMuted.TLabel', wraplength=165)
         self.archive_label.pack(side='bottom', anchor='w', padx=12, pady=10)
         main = ttk.Frame(self.root, padding=(22, 18)); main.pack(side='left', fill='both', expand=True)
         header = ttk.Frame(main); header.pack(fill='x', pady=(0, 14))
@@ -170,7 +177,7 @@ class LedgerApp:
         self.tasks.submit(work, done or (lambda result: self.feedback('Done.')), failed or self.job_error)
 
     def feedback(self, message, error=False):
-        self.status.configure(text=message, foreground=RED if error else MUTED)
+        self.status.configure(text=message, foreground=palette(self)['RED'] if error else palette(self)['MUTED'])
 
     def job_error(self, error):
         self.feedback(str(error) + ' — Open Diagnostics for import details.', error=True)
@@ -210,7 +217,7 @@ class LedgerApp:
             view.pack_forget()
         self.view_name = name
         for title, button in self.nav.items():
-            button.configure(style='Active.Nav.TButton' if title == name else 'Nav.TButton')
+            button.configure(style='Active.Sidebar.Nav.TButton' if title == name else 'Sidebar.Nav.TButton')
         view = self.views[name]; view.pack(fill='both', expand=True)
         if self.payload:
             view.render(self.payload)

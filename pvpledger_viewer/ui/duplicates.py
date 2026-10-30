@@ -3,6 +3,7 @@ import tkinter as tk
 from tkinter import ttk
 from .widgets import Table, page_heading
 from ..viewmodels import display, history_row
+from .theme import palette
 
 
 class DuplicateReviewView(ttk.Frame):
@@ -64,7 +65,7 @@ class DuplicateReviewView(ttk.Frame):
         if not row:
             self.app.feedback('Select a review row first.', error=True); return
         dialog = tk.Toplevel(self); dialog.title('Duplicate evidence'); dialog.geometry('1000x650')
-        text = tk.Text(dialog, wrap='word', bg='#0e1928', fg='#e7edf5')
+        text = tk.Text(dialog, wrap='word', bg=palette(self)['FIELD'], fg=palette(self)['TEXT'])
         scrollbar = ttk.Scrollbar(dialog, command=text.yview); scrollbar.pack(side='right', fill='y')
         text.configure(yscrollcommand=scrollbar.set); text.pack(fill='both', expand=True)
         text.insert('end', f"Decision: {row['decision']} · User decision: {bool(row['manual'])}\nReason: {row['reason']}\n")

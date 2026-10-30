@@ -4,7 +4,7 @@ import logging
 import tkinter as tk
 from tkinter import ttk, filedialog
 from .widgets import ScrollFrame
-from .theme import MUTED, RED
+from .theme import palette, chart_palette
 from ..comparisons import METRICS
 from ..charts import RENDER_LOCK
 
@@ -22,7 +22,7 @@ class ComparisonChartDialog(tk.Toplevel):
         ttk.Label(top, text='Ctrl-click metrics; each uses a separate scale.').pack(side='left')
         selection = ttk.Frame(top); selection.pack(side='left', padx=10)
         self.chosen = tk.Listbox(selection, selectmode='extended', exportselection=False,
-                                 height=3, bg='#0e1928', fg='#e7edf5', selectbackground='#304460')
+                                 height=3, bg=palette(self)['FIELD'], fg=palette(self)['TEXT'], selectbackground=palette(self)['LIST_SELECTION_BG'])
         self.chosen.pack(side='left')
         scrollbar = ttk.Scrollbar(selection, command=self.chosen.yview)
         scrollbar.pack(side='right', fill='y'); self.chosen.configure(yscrollcommand=scrollbar.set)
@@ -48,7 +48,7 @@ class ComparisonChartDialog(tk.Toplevel):
             self.status.configure(wraplength=max(300, event.width - 30))
 
     def say(self, message, error=False):
-        self.status.configure(text=message, foreground=RED if error else MUTED)
+        self.status.configure(text=message, foreground=palette(self)['RED'] if error else palette(self)['MUTED'])
 
     def clear_chart(self, message):
         self.dispose_canvas()
@@ -142,7 +142,7 @@ class ComparisonChartDialog(tk.Toplevel):
         canvas.get_tk_widget().configure(height=350 * len(selected))
         canvas.get_tk_widget().pack(fill='x', expand=True)
         with RENDER_LOCK:
-            draw(figure, model, selected); canvas.draw()
+            draw(figure, model, selected, palette=chart_palette(self)); canvas.draw()
         self.chart_canvas = canvas
         self.displayed_model, self.displayed_metrics = deepcopy(model), list(selected)
         self.export_button.configure(state='normal')
@@ -163,10 +163,11 @@ class ComparisonChartDialog(tk.Toplevel):
             # Export the displayed snapshot, even if the list selection changed afterward.
             model, selected = deepcopy(self.displayed_model), list(self.displayed_metrics)
             service, wow_root = self.app.service, self.app.config['wow_root']
+            colors = chart_palette(self)
             def work():
                 from ..comparison_charts import export_png
                 service._guard_export(path, wow_root)
-                return export_png(path, model, selected)
+                return export_png(path, model, selected, palette=colors)
             def saved(path):
                 if self.winfo_exists():
                     self.say('PNG saved: ' + str(path))
