@@ -1,13 +1,13 @@
 import tkinter as tk
 from tkinter import ttk, filedialog
-from .theme import BG
+from .theme import palette
 
 
 class SettingsDialog(tk.Toplevel):
     def __init__(self, app):
         super().__init__(app.root)
         self.master_app = app
-        self.title('PvP Ledger — Settings'); self.configure(bg=BG)
+        self.title('PvP Ledger — Settings'); self.configure(bg=palette(self)['BG'])
         self.transient(app.root); self.grab_set(); self.resizable(False, False)
         body = ttk.Frame(self, padding=25); body.pack(fill='both', expand=True)
         ttk.Label(body, text='Settings', style='Title.TLabel').grid(row=0, column=0, columnspan=3, sticky='w', pady=(0, 18))
@@ -34,14 +34,19 @@ class SettingsDialog(tk.Toplevel):
         ttk.Checkbutton(body,text='Automatic synchronization',variable=self.enabled).grid(row=12,column=0,sticky='w')
         ttk.Entry(body,textvariable=self.interval,width=8).grid(row=12,column=1,sticky='e')
         ttk.Label(body,text='Interval (seconds, minimum 30)').grid(row=13,column=0,sticky='w')
-        self.error = ttk.Label(body, foreground='#f28b94', wraplength=580)
+        from ..settings import THEME_NAMES
+        self.theme = tk.StringVar(value=app.config['theme'])
+        ttk.Label(body, text='Theme (restart to apply)').grid(row=15, column=0, sticky='w')
+        ttk.Combobox(body, textvariable=self.theme, values=THEME_NAMES,
+                     state='readonly', width=18).grid(row=15, column=1, columnspan=2, sticky='e')
+        self.error = ttk.Label(body, foreground=palette(self)['RED'], wraplength=580)
         self.error.grid(row=9, column=0, columnspan=3, sticky='w')
         def save():
             try:
                 count = int(self.limit.get())
                 if count < 1:
                     raise ValueError('Match count must be positive')
-                config = app.config | {key: value.get().strip() for key, value in self.paths.items()} | {'report_limit': count, 'source_timezone': self.zone.get().strip(), 'sync_enabled':self.enabled.get(), 'sync_interval':int(self.interval.get())}
+                config = app.config | {key: value.get().strip() for key, value in self.paths.items()} | {'report_limit': count, 'source_timezone': self.zone.get().strip(), 'sync_enabled':self.enabled.get(), 'sync_interval':int(self.interval.get()), 'theme': self.theme.get()}
                 if hasattr(self,'selected_sources'):
                     config.update(source_locations=self.selected_sources,source_selection_explicit=True)
                 elif config['wow_root'] != app.config['wow_root']:

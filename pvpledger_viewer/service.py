@@ -174,6 +174,26 @@ class DesktopService:
         from .player_index import encounters
         return encounters(self.home, key)
 
+    def player_evidence(self, event_id, player_key):
+        """Return every retained source sighting for this player encounter."""
+        from .sync import sidecar
+        db = sidecar(self.home)
+        try:
+            return [json.loads(r[0]) for r in db.execute(
+                'SELECT data FROM sightings WHERE event_id=? AND player_key=?',
+                (event_id, player_key))]
+        finally:
+            db.close()
+
+    def unresolved_records(self):
+        """Return captured records that could not be resolved by the index."""
+        from .sync import sidecar
+        db = sidecar(self.home)
+        try:
+            return [json.loads(r[0]) for r in db.execute('SELECT data FROM unresolved')]
+        finally:
+            db.close()
+
     def ranking(self, key=None, metric='Damage', scope='All recorded participants', reference=None,
                 historical_mode='Individual Encounters', minimum=1, filters=None):
         from .rankings import rank, historical

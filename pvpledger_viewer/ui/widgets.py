@@ -2,13 +2,13 @@ import tkinter as tk
 from tkinter import ttk
 from tkinter import font as tkfont
 from ..viewmodels import display, sort_records
-from .theme import BG, PANEL, GOLD, TEAL, RED, MUTED
+from .theme import palette
 
 
 class ScrollFrame(ttk.Frame):
     def __init__(self, parent):
         super().__init__(parent)
-        self.canvas = tk.Canvas(self, bg=BG, highlightthickness=0)
+        self.canvas = tk.Canvas(self, bg=palette(self)['BG'], highlightthickness=0)
         scrollbar = ttk.Scrollbar(self, orient='vertical', command=self.canvas.yview)
         self.body = ttk.Frame(self.canvas)
         self.item = self.canvas.create_window((0, 0), window=self.body, anchor='nw')
@@ -46,11 +46,11 @@ class Table(ttk.Frame):
         vertical.grid(row=0, column=1, sticky='ns')
         horizontal.grid(row=1, column=0, sticky='ew')
         self.rowconfigure(0, weight=1); self.columnconfigure(0, weight=1)
-        self.tree.tag_configure('win', foreground=TEAL)
-        self.tree.tag_configure('loss', foreground=RED)
-        self.tree.tag_configure('partial', foreground=GOLD)
-        self.tree.tag_configure('self', foreground=GOLD, background='#2d2c26')
-        self.tree.tag_configure('premade', foreground=TEAL)
+        self.tree.tag_configure('win', foreground=palette(self)['TEAL'])
+        self.tree.tag_configure('loss', foreground=palette(self)['RED'])
+        self.tree.tag_configure('partial', foreground=palette(self)['GOLD'])
+        self.tree.tag_configure('self', foreground=palette(self)['GOLD'], background=palette(self)['SELF_ROW_BG'])
+        self.tree.tag_configure('premade', foreground=palette(self)['TEAL'])
         if on_open:
             self.tree.bind('<Double-1>', self._open_row)
             self.tree.bind('<Return>', lambda e: self.open_selected())

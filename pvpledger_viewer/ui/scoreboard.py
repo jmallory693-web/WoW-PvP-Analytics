@@ -1,7 +1,7 @@
 import tkinter as tk
 from tkinter import ttk
 from .widgets import Table
-from .theme import BG, GOLD
+from .theme import palette
 from ..service import EDITABLE_FIELDS, MATCH_TYPES
 from ..viewmodels import display, premade_description
 
@@ -15,7 +15,7 @@ class ScoreboardWindow(tk.Toplevel):
     def __init__(self, app, key, model):
         super().__init__(app.root)
         self.app, self.key, self.model = app, tuple(key), model
-        self.configure(bg=BG)
+        self.configure(bg=palette(self)['BG'])
         self.title('PvP Ledger — Match Scoreboard')
         self.geometry('1180x700'); self.minsize(960, 560)
         self.transient(app.root)
@@ -35,7 +35,7 @@ class ScoreboardWindow(tk.Toplevel):
         self.metadata.pack(fill='x', pady=(0, 14))
         self.tabs = ttk.Notebook(container)
         self.teams = {}
-        ttk.Label(container, text='YOU = gold   ·   PREMADE / known ALLY = teal   ·   Select a column to sort   ·   Scroll horizontally for objectives and attendance', style='Muted.TLabel', wraplength=1100).pack(side='bottom', anchor='w', pady=(12, 0))
+        ttk.Label(container, text=f"YOU = {palette(self)['SELF_LABEL']}   ·   PREMADE / known ALLY = {palette(self)['ALLY_LABEL']}   ·   Select a column to sort   ·   Scroll horizontally for objectives and attendance", style='Muted.TLabel', wraplength=1100).pack(side='bottom', anchor='w', pady=(12, 0))
         self.tabs.pack(fill='both', expand=True)
         self.render(model)
         self.after_idle(self.focus_set)
@@ -74,7 +74,7 @@ class ScoreboardWindow(tk.Toplevel):
     def sources(self):
         import json
         dialog = tk.Toplevel(self); dialog.title('Match sources and provenance'); dialog.geometry('1000x650')
-        box = tk.Text(dialog, wrap='word', bg=BG, fg='#e7edf5')
+        box = tk.Text(dialog, wrap='word', bg=palette(self)['BG'], fg=palette(self)['TEXT'])
         scroll = ttk.Scrollbar(dialog, command=box.yview); scroll.pack(side='right', fill='y')
         box.configure(yscrollcommand=scroll.set); box.pack(fill='both', expand=True)
         m = self.model['match']
@@ -92,7 +92,7 @@ class ScoreboardWindow(tk.Toplevel):
 
     def edit(self):
         dialog = tk.Toplevel(self); dialog.title('Edit partial-match metadata')
-        dialog.configure(bg=BG); dialog.transient(self); dialog.grab_set()
+        dialog.configure(bg=palette(self)['BG']); dialog.transient(self); dialog.grab_set()
         body = ttk.Frame(dialog, padding=22); body.pack(fill='both', expand=True)
         ttk.Label(body, text='Correct the record', style='Heading.TLabel').grid(row=0, column=0, columnspan=2, sticky='w')
         ttk.Label(body, text='Leave unknown values blank. Edits are overrides; raw data stays unchanged.', style='Muted.TLabel', wraplength=480).grid(row=1, column=0, columnspan=2, sticky='w', pady=(6, 15))
@@ -107,7 +107,7 @@ class ScoreboardWindow(tk.Toplevel):
                 widget = ttk.Entry(body, textvariable=variable, width=29)
             widget.grid(row=index, column=1, sticky='ew', pady=4)
             entries[field] = variable
-        error = ttk.Label(body, text='', foreground='#f28b94', wraplength=480)
+        error = ttk.Label(body, text='', foreground=palette(self)['RED'], wraplength=480)
         error.grid(row=12, column=0, columnspan=2, sticky='w', pady=8)
         def save():
             values = {field: var.get() for field, var in entries.items()}

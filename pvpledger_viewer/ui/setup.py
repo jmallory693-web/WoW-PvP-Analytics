@@ -4,6 +4,7 @@ import tkinter as tk
 from tkinter import ttk, filedialog
 from .. import setup
 from .widgets import ScrollFrame
+from .theme import palette
 
 
 class SetupDialog(tk.Toplevel):
@@ -18,7 +19,7 @@ class SetupDialog(tk.Toplevel):
         self.sync = tk.BooleanVar(value=True); self.do_import = tk.BooleanVar(value=False)
         self.own = []; self.friends = []; self.paths = []; self.source_files = []
         footer = ttk.Frame(self,padding=12); footer.pack(side='bottom',fill='x')
-        self.error = ttk.Label(footer,wraplength=650,foreground='#f28b94'); self.error.pack(fill='x')
+        self.error = ttk.Label(footer,wraplength=650,foreground=palette(self)['RED']); self.error.pack(fill='x')
         ttk.Button(footer,text='Start',style='Accent.TButton',command=self.finish).pack(side='right')
         ttk.Button(footer,text='Skip optional setup',command=self.skip).pack(side='left')
         book = ttk.Notebook(self); book.pack(fill='both',expand=True,padx=16,pady=12)

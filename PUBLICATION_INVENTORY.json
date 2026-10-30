@@ -1,22 +1,18 @@
 {
   "format_version": 1,
-  "status": "READY FOR GITHUB REVIEW - explicit source set only",
-  "verification_date": "2026-10-29",
+  "status": "APPROVED WARBAND SOURCE RELEASE - explicit audited source set only",
+  "verification_date": "2026-10-30",
   "test_result": {
-    "passed": 355,
+    "passed": 373,
     "failed": 0,
     "skipped": 0,
-    "warnings": 1,
-    "seconds": 103.78,
-    "full_suite_runs_in_this_task": 2,
-    "initial_sandbox_result": {
-      "passed": 162,
-      "setup_errors": 193,
-      "cause": "pytest temporary-directory permissions"
-    }
+    "errors": 0,
+    "warnings": 0,
+    "seconds": 151.73,
+    "full_suite_runs_in_this_task": 1
   },
-  "content_file_count": 94,
-  "total_file_count_including_inventory": 95,
+  "content_file_count": 104,
+  "total_file_count_including_inventory": 105,
   "files": [
     {
       "path": ".gitignore",
@@ -24,19 +20,34 @@
       "sha256": "61f35ba09f1a86c3225c9b083fb5d77ae744a7609900550039ece2c0907e93eb"
     },
     {
+      "path": "CHART_THEME_VERIFICATION.md",
+      "size": 5528,
+      "sha256": "71e72c1b2ece3f3f5b5912f235ef080bac4c41b2a73ee90b38cbf4858dd1df03"
+    },
+    {
       "path": "GITHUB_PRIVACY_VERIFICATION.md",
-      "size": 9039,
-      "sha256": "0d6374755d976d4ed973228db312e93c590baeedb6ac38515949da67af4cc92c"
+      "size": 10255,
+      "sha256": "4d6b81ffb5adc9a45b17e4aca0f7360b854c5715eb696953f11d857bc29ff249"
     },
     {
       "path": "PvPLedgerViewer.spec",
-      "size": 1134,
-      "sha256": "db11ba5fd139e54a6541cba789b4afa05486163e17a0c7e958aa93dc6f701fc8"
+      "size": 1354,
+      "sha256": "c5ca048bbef1e80b775eb6b86218ec4a216f300adf7ce51f1dd2fe71c85ddf56"
     },
     {
       "path": "README.md",
-      "size": 10804,
-      "sha256": "b28450fc1cf9fb3d239bdea40ec2d8154cfc62b911c06a6614efdad1bf1c51bc"
+      "size": 11428,
+      "sha256": "1739ae8ede8344ca982a1af0f381469d6f57219936a8e4108cf9243a6eec2913"
+    },
+    {
+      "path": "SOURCE_SYNC_VERIFICATION.md",
+      "size": 2673,
+      "sha256": "0039d8d5cd756379d144516745d1842b24e4f0057cf2c3e00887bee835343427"
+    },
+    {
+      "path": "WARBAND_RELEASE_VERIFICATION.md",
+      "size": 4557,
+      "sha256": "c17fa65d281e6a3c1a6397fe51b718ab7aed85ee177d0ef2966f765e32fbca06"
     },
     {
       "path": "packaging/launcher.py",
@@ -59,6 +70,21 @@
       "sha256": "98bd3a00713fae3cf767a7a906730536da97a5e7732dd2063edeb62e427f6022"
     },
     {
+      "path": "pvpledger_viewer/assets/fonts/Cinzel.ttf",
+      "size": 125468,
+      "sha256": "f4d83d34d1f6c741193e4acf4b3dff9531e5a67b6aa65228d00a7db72a4e0f34"
+    },
+    {
+      "path": "pvpledger_viewer/assets/fonts/OFL.txt",
+      "size": 4383,
+      "sha256": "f2b3029aba64c378bf0963b62945eee15e564fe4330b934c8f2eb058282b5e83"
+    },
+    {
+      "path": "pvpledger_viewer/assets/fonts/README.md",
+      "size": 498,
+      "sha256": "ba19e04e19b006af9129df4eabb1f54fbd32953645be1036f72a8249aa568cbf"
+    },
+    {
       "path": "pvpledger_viewer/background.py",
       "size": 1627,
       "sha256": "de81ab9ff69cc8f12ae42b31277e9af86f56d7271668ff7dda5ba284c71a1679"
@@ -79,9 +105,14 @@
       "sha256": "73d23d19f01f7a1ef7e7d2cd791461d793c3e850690d8d713809eddddcd2c7b9"
     },
     {
+      "path": "pvpledger_viewer/chart_style.py",
+      "size": 2393,
+      "sha256": "4d7fc141bd1207ead8401b83161060c85fe66e611059d0e197d2e076cee00a43"
+    },
+    {
       "path": "pvpledger_viewer/charts.py",
-      "size": 4449,
-      "sha256": "f07cc51a855fe38f54916ca0d8cdf23dc6c47bc75d1cc0a3937cdd2fc0f14d15"
+      "size": 4590,
+      "sha256": "8341077916d38497493822d2ebfb1fc1892d80c5a532f50e659f42d24d574e67"
     },
     {
       "path": "pvpledger_viewer/cli.py",
@@ -90,8 +121,8 @@
     },
     {
       "path": "pvpledger_viewer/comparison_charts.py",
-      "size": 3195,
-      "sha256": "7d9debde1634c74810fe19fd5f3b51f195be11d486c4c11ced3266b53ba2fb82"
+      "size": 3437,
+      "sha256": "a3b867ac62cde444de880bb327713871dd206a3202a78a1680cb4cbc05a17d6e"
     },
     {
       "path": "pvpledger_viewer/comparisons.py",
@@ -170,8 +201,8 @@
     },
     {
       "path": "pvpledger_viewer/rated_charts.py",
-      "size": 1069,
-      "sha256": "f289ca073a852415192866765749f6b42c18ea2bb9dafd826c6c7089f650d551"
+      "size": 1167,
+      "sha256": "7aa43daffe9daa2c7d66ac884d2f47d7d8f11e282fee45aa3e519c6fad8f7da0"
     },
     {
       "path": "pvpledger_viewer/reconcile.py",
@@ -195,13 +226,13 @@
     },
     {
       "path": "pvpledger_viewer/service.py",
-      "size": 17540,
-      "sha256": "f7a9b0c1bdbb14a6702a41281490256b7b337b75d317dade38d5693e3f59ad1c"
+      "size": 18313,
+      "sha256": "0ded7aa5d22e1ff1548140f06fde4131945342ce026a232d5d59380ffd12cd32"
     },
     {
       "path": "pvpledger_viewer/settings.py",
-      "size": 6259,
-      "sha256": "e99cfe29b9c6883d29eef517aa9a23fc6710f947bca69d57f417454cdc62f9bd"
+      "size": 6448,
+      "sha256": "6a1dfba1f9f14cfc996961459be933aeba42e0628718f1bd8061b8c7bc1f385b"
     },
     {
       "path": "pvpledger_viewer/setup.py",
@@ -230,13 +261,13 @@
     },
     {
       "path": "pvpledger_viewer/ui/advanced_comparison.py",
-      "size": 12251,
-      "sha256": "23336cbada207befa75d66e0306e0f343d311ef7cc1d03d8a2b433dc28d55e93"
+      "size": 12398,
+      "sha256": "e709e87e60cf8b842f2c2eb5083909bf650806971aaef8e450e670e379cc0883"
     },
     {
       "path": "pvpledger_viewer/ui/ai_export.py",
-      "size": 4745,
-      "sha256": "f9657e622e70e0307d7fca3e6aa258448e6c54d4fd9d9bddd12e70eeaed4336d"
+      "size": 4797,
+      "sha256": "fec837606ba6e2cafd21ade65551de057e004ec23c5d77179acdf11aaf2364cb"
     },
     {
       "path": "pvpledger_viewer/ui/allies.py",
@@ -245,8 +276,8 @@
     },
     {
       "path": "pvpledger_viewer/ui/app.py",
-      "size": 20175,
-      "sha256": "7cee5ab54b9d0178edea4778c2db7908f41610acaab55044d36d79e6bbf98b8c"
+      "size": 20784,
+      "sha256": "c38367dd6b5218d8663d96fa350edc75ecc6aa6500877a64abbd1a4530f477f1"
     },
     {
       "path": "pvpledger_viewer/ui/calendar.py",
@@ -255,8 +286,8 @@
     },
     {
       "path": "pvpledger_viewer/ui/character_search.py",
-      "size": 2573,
-      "sha256": "3baf444434c057a66c851665527e5c71df64743efeda290fc20d1d5fd8548351"
+      "size": 2650,
+      "sha256": "879dc3ca105121ece0cae9bdcb82f3cff1021e45817b4b5d5823ac4cbbef02fe"
     },
     {
       "path": "pvpledger_viewer/ui/comparison.py",
@@ -265,43 +296,48 @@
     },
     {
       "path": "pvpledger_viewer/ui/comparison_dialog.py",
-      "size": 8880,
-      "sha256": "0bed34db885f2c32078770af0b91f4a476b6723c288527149ce185a19e542852"
+      "size": 9062,
+      "sha256": "3abeaa9efbe8a1750ab1c7e1863510f234d163823f16de41a540348483448ce6"
     },
     {
       "path": "pvpledger_viewer/ui/diagnostics.py",
-      "size": 3018,
-      "sha256": "aaa3514b08bbeb8126626204bb6ddae774e1dba8dd9315adcecf0a147d433f45"
+      "size": 3080,
+      "sha256": "589b247884573a540e9a8d1ef738cd39d5ce75f3be9740f4d5426e8725387d38"
     },
     {
       "path": "pvpledger_viewer/ui/duplicates.py",
-      "size": 5017,
-      "sha256": "14d93fd4d3362995d0aec17b1067b44fef977c5c13f7b94ee5d093b30a8f2f52"
+      "size": 5069,
+      "sha256": "8f8089a28ee62e5734dcba42c4c64534441c2838c95879e4981a16f1ba9b42a2"
+    },
+    {
+      "path": "pvpledger_viewer/ui/fonts.py",
+      "size": 1330,
+      "sha256": "464d540ad89b2f221baaf9beea39cd0f1816040c285dfaa2aca6578fbcd82cff"
     },
     {
       "path": "pvpledger_viewer/ui/history.py",
-      "size": 1848,
-      "sha256": "8622b8a7f48a785a5adf63231cfce456a36940a924bc1ab01569b76c5c37185a"
+      "size": 1904,
+      "sha256": "f0a448f60c9f02acc94ec519548f387d2a82beab50ead52f21cb876462256ccd"
     },
     {
       "path": "pvpledger_viewer/ui/home.py",
-      "size": 3684,
-      "sha256": "ba46e64274c7c38c1d4489f1c8b23aefe9475346ef47ffe0a6d5baf6e170ed77"
+      "size": 5134,
+      "sha256": "1f45a1609f607815a79283d51839ceb15c3e5523fa1f6cf48d9205f4386450c1"
     },
     {
       "path": "pvpledger_viewer/ui/people.py",
-      "size": 5591,
-      "sha256": "6cd6800a18ddf9420fdf359c405fcf785a5a313a57234c65e6acd95fce185068"
+      "size": 5679,
+      "sha256": "7b81b77dc19572848df8673e478760aeef9732d401f7da943643cf003435ba19"
     },
     {
       "path": "pvpledger_viewer/ui/players.py",
-      "size": 10594,
-      "sha256": "d61db759c0b613947abca9be2894a45a9f4e89970972ab32162a47c13ca0d948"
+      "size": 10291,
+      "sha256": "055964c49e177067d589d5e45cd291c38f178f1d993e893f8322493630bed47e"
     },
     {
       "path": "pvpledger_viewer/ui/rated.py",
-      "size": 17803,
-      "sha256": "3396c0d6d890e1b6333b5d137d8ee916bfc395f636eb5a2fd2ad833e03d62124"
+      "size": 17865,
+      "sha256": "e71f5856b1222c47feec021db89c85c9ee1139276622ff8fa67be7bee590f178"
     },
     {
       "path": "pvpledger_viewer/ui/reconciliation.py",
@@ -310,33 +346,33 @@
     },
     {
       "path": "pvpledger_viewer/ui/scoreboard.py",
-      "size": 9466,
-      "sha256": "82818529dbf6e0a58517f8e643007c906ecd15724adb5b7fa6ca6965e2eff637"
+      "size": 9590,
+      "sha256": "c57c5f1b9b2bc22beaf661f63e2e0b8fa080a1d6461d0fa80df1d08241efcd24"
     },
     {
       "path": "pvpledger_viewer/ui/settings.py",
-      "size": 8336,
-      "sha256": "802d7bfe8359118387eac205278fc9654fd585cf67f6b076e78eab9748ee325e"
+      "size": 8767,
+      "sha256": "b395dd7c66eed34c4d8a56fd4e32605feb74327de72c9193c82d92510600ad4d"
     },
     {
       "path": "pvpledger_viewer/ui/setup.py",
-      "size": 10728,
-      "sha256": "6d5bd6745700746f0e0b00ea3d08671e283a84e15fc0b5a90e444c4399d2a4ca"
+      "size": 10766,
+      "sha256": "896c692a9803aa08a349d51f54810557955ee65b734e6f29649632f651dcf0ed"
     },
     {
       "path": "pvpledger_viewer/ui/theme.py",
-      "size": 3686,
-      "sha256": "bd3412906d62718acb0121524c557ee696321bcca2f5a53db22f1b8cd2d6ab7d"
+      "size": 14247,
+      "sha256": "27fef088565bdb49171b848dd37210eea6173ddfee64caf83d07dcb52135e23f"
     },
     {
       "path": "pvpledger_viewer/ui/trends.py",
-      "size": 12044,
-      "sha256": "13f19e72204c442dc731ac7f32de4be99563c542bb0115cf3905c36e92a35977"
+      "size": 12469,
+      "sha256": "d8170f49417d5e6d0e68d5277615d9d8ad00b6b63723df95e879ad90a2cae91a"
     },
     {
       "path": "pvpledger_viewer/ui/widgets.py",
-      "size": 5569,
-      "sha256": "fe63baf2df5bf991df920fc0ff3118d64bb9f4a5d5e9fa8eb82977494ea18bef"
+      "size": 5664,
+      "sha256": "48ca7e96a1383cb5dfdc9a45c791050705ed80cf5c17b7a7ddbc89cf96fb1d3e"
     },
     {
       "path": "pvpledger_viewer/upgrade.py",
@@ -350,8 +386,8 @@
     },
     {
       "path": "pyproject.toml",
-      "size": 697,
-      "sha256": "8ea8dc355d10c202e6c5b9a8b7bc311b7b1f0b2b09a1946efe4099552e230a32"
+      "size": 796,
+      "sha256": "ba0190fd9a883b71b463f059a85868b8c41353e9fd1b2bd591b2993996e58abf"
     },
     {
       "path": "reference/addon/PvPLedger/PvPLedger.lua",
@@ -424,6 +460,11 @@
       "sha256": "38a6ad51f0dd57db5d9572a1a17f502f20e1c9f1514f244fe45f9348e9e08efa"
     },
     {
+      "path": "tests/test_chart_themes.py",
+      "size": 9326,
+      "sha256": "6c7aabd6375e3cabcc68567036e3b26fbb8a485d51b941e0a5f9656e2a64f098"
+    },
+    {
       "path": "tests/test_core.py",
       "size": 14468,
       "sha256": "e19dd48a249139aff7f7e1f2f68e34547b0a4c1295a369a234c3b2671961a1e4"
@@ -442,6 +483,11 @@
       "path": "tests/test_excel_gui.py",
       "size": 3692,
       "sha256": "63c4c1a816a27e0db6060b4e93edf316a5216beac7bd426ae0539338fd117221"
+    },
+    {
+      "path": "tests/test_home_layout.py",
+      "size": 6178,
+      "sha256": "0691bf2d4231738654ef8a6b1f27d419140b3ccef3af9fb9840b9855ab0bab1c"
     },
     {
       "path": "tests/test_phase2.py",
@@ -469,24 +515,24 @@
       "sha256": "7aff37ee784107b4903591ea8d6d83572ac566f4c28d6559a6947301478f4134"
     },
     {
+      "path": "tests/test_themes.py",
+      "size": 4519,
+      "sha256": "2a90a4bba365e85f10706ca921dbc497a972606d4c4e67999ac645ec5c76443f"
+    },
+    {
       "path": "tests/test_v12.py",
       "size": 17835,
       "sha256": "1b4cd021c5ac8687dcf7e4f2b934da70617d44cc72c6d4b8d0e78ae2b0e289a4"
     },
     {
       "path": "tests/test_v13.py",
-      "size": 19322,
-      "sha256": "ada562911eaa674394978b8d05a242344cb156a710829584df6547ebb899d8b6"
+      "size": 20684,
+      "sha256": "c538267ffaa73ec48228ddc8e01750aa8874a0bfa7609ce16166a576b38f2c96"
     },
     {
       "path": "tests/test_v13_gui.py",
       "size": 4363,
       "sha256": "1c64deb894840da8207779ddc8a427ca292abecf3615d5e8f0bfab2185d9d9d9"
-    },
-    {
-      "path": "SOURCE_SYNC_VERIFICATION.md",
-      "size": 2725,
-      "sha256": "805a568bd9c185b4905be953ab505bcae26185b64aa1510d7016eaf6069454ee"
     }
   ],
   "inventory_self": {
@@ -496,7 +542,7 @@
   },
   "exclusion_rule": "Exclude every file not listed in files or inventory_self; do not copy the existing working directory or .git.",
   "excluded_categories": [
-    "Existing Git metadata and history",
+    "Private local Git metadata and history; existing published history is preserved",
     "Private profiles, settings, identities and databases",
     "Original addon records and snapshots",
     "Real Excel workbooks",
@@ -509,7 +555,7 @@
     "One-time tools and migration scripts",
     "Credentials and local environment files"
   ],
-  "scope_note": "Fresh published clone; local source equals main 2200af6; preserve hotfix 80f95fd in full. Source synchronization report and current validation metadata only; no private history, runtime data, redesign or executable changes.",
+  "scope_note": "All four approved Warband development steps; source files match 1bdc82c. Only inventory and publication verification documents are refreshed. Fresh branch from published GitHub main; no private local Git history, runtime data, binaries or generated verification files.",
   "schema67_hotfix": {
     "addon": "PvP Ledger 1.3.4",
     "schemas": [
@@ -519,7 +565,21 @@
     "match_columns": 48,
     "roster_columns": 21,
     "relevant_tests_passed": 129,
-    "full_tests_passed": 355,
-    "raw_snapshot_reprocessing": "verified without match or roster duplication; raw history and overrides preserved"
+    "full_tests_passed": 373,
+    "raw_snapshot_reprocessing": "verified without match or roster duplication; raw history and overrides preserved",
+    "preserved_commit": "80f95fd"
+  },
+  "approved_development_commit": "1bdc82c8729de42897c95a037ddab449e29f6569",
+  "publishing_base_commit": "5df039719929240b00fc2b155ccb8b4f8fbc1a2f",
+  "hash_basis": "Exact published Git blob bytes; inventory self-hash deliberately omitted.",
+  "font_assets": {
+    "family": "Cinzel",
+    "license": "SIL Open Font License 1.1",
+    "files": [
+      "pvpledger_viewer/assets/fonts/Cinzel.ttf",
+      "pvpledger_viewer/assets/fonts/OFL.txt",
+      "pvpledger_viewer/assets/fonts/README.md"
+    ],
+    "system_font_installation": false
   }
 }

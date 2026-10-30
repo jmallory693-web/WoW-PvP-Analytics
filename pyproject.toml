@@ -22,5 +22,8 @@ pvpledger-desktop = "pvpledger_viewer.ui.app:main"
 [tool.setuptools.packages.find]
 include = ["pvpledger_viewer*"]
 
+[tool.setuptools.package-data]
+pvpledger_viewer = ["assets/fonts/*.ttf", "assets/fonts/*.txt"]
+
 [tool.pytest.ini_options]
 testpaths = ["tests"]

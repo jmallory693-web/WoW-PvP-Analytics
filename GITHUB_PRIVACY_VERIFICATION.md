@@ -1,3 +1,27 @@
+# Current Warband publication verification
+
+Date: October 30, 2026. **Approved source release; current explicit inventory only.**
+
+All four completed Warband steps match approved development commit `1bdc82c`.
+A fresh publishing clone descends from published main `5df0397` and preserves
+the schema 6/7 hotfix. No private local Git history is imported.
+
+The complete Windows test suite passed: **373 passed, zero failures, skips,
+errors or warnings**, 151.73 seconds. All candidate source, tests, docs and
+font assets passed the privacy/credential scan, including decompressed workbook
+members and font metadata. No personal archives, databases, identities,
+settings, addon captures, exports, screenshots, recordings, binaries or private
+verification outputs are included. Cinzel and its SIL OFL 1.1 license are included.
+
+See [Warband release verification](WARBAND_RELEASE_VERIFICATION.md) for current
+scope, tests, history checks, preservation checks and limitations. The updated
+`PUBLICATION_INVENTORY.json` is the authoritative exact file allowlist.
+
+The dated record below is retained as historical verification evidence. Its
+older inventory counts and executable hashes are not the current release state.
+
+---
+
 # GitHub privacy verification
 
 Date: October 25, 2026. Scope: verification and publication inventory only.

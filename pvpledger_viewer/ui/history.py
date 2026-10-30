@@ -1,5 +1,6 @@
 from tkinter import ttk
 from .widgets import Table, page_heading
+from .theme import palette
 from ..metrics import match_key
 
 COLUMNS = [('Date/time', 'Date / time', 150), ('Character', 'Character', 110), ('Source', 'Source', 100), ('Map display', 'Map / ID', 160),
@@ -12,7 +13,7 @@ class HistoryView(ttk.Frame):
     def __init__(self, parent, app):
         super().__init__(parent)
         self.app = app
-        page_heading(self, 'Match history', 'Double-click a match to open its scoreboard. Gold rows are partial; unknown results never count as losses.')
+        page_heading(self, 'Match history', f"Double-click a match to open its scoreboard. {palette(self)['PARTIAL_LABEL']} rows are partial; unknown results never count as losses.")
         controls = ttk.Frame(self); controls.pack(fill='x', pady=(0, 10))
         self.count = ttk.Label(controls, style='Muted.TLabel'); self.count.pack(side='left')
         ttk.Button(controls, text='Previous', command=lambda: app.change_page(-1)).pack(side='right')

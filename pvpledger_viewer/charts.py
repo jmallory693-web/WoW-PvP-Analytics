@@ -4,6 +4,7 @@ import threading
 from .archive import safe_destination
 from .trends import METRICS, metric_value
 from .metrics import match_date
+from .chart_style import apply_chart_palette
 
 RENDER_LOCK = threading.RLock()
 COLORS = ('#d8b56c', '#6cd4b0', '#8db8f5', '#f28b94', '#c7a4ec', '#f5b878')
@@ -25,7 +26,7 @@ def chart_series(model, metric, teammate=False):
     return result
 
 
-def draw_chart(figure, model, metric, teammate=False):
+def draw_chart(figure, model, metric, teammate=False, *, palette=None):
     with RENDER_LOCK:
         figure.clear(); figure.set_facecolor('#0c1420')
         axis = figure.add_subplot(111); axis.set_facecolor('#0e1928')
@@ -61,11 +62,12 @@ def draw_chart(figure, model, metric, teammate=False):
         axis.set_xlabel('Chronological match/window endpoint within each series (hover for date)\nAt most 2,000 displayed points/series; summary statistics use all records', fontsize=9)
         axis.set_ylabel(metric + (' (%)' if metric == 'Win rate' else ''))
         axis.grid(alpha=.15, color='#a3b2c5')
+        apply_chart_palette(figure, palette)
         figure.subplots_adjust(left=.09, right=.98, top=.88, bottom=.3)
         return axis, lines
 
 
-def export_png(destination, model, metric, teammate=False):
+def export_png(destination, model, metric, teammate=False, *, palette=None):
     from matplotlib.figure import Figure
     from matplotlib.backends.backend_agg import FigureCanvasAgg
     destination = safe_destination(destination)
@@ -73,7 +75,7 @@ def export_png(destination, model, metric, teammate=False):
     with RENDER_LOCK:
         figure = Figure(figsize=(13, 7), dpi=120)
         FigureCanvasAgg(figure)
-        draw_chart(figure, model, metric, teammate)
+        draw_chart(figure, model, metric, teammate, palette=palette)
         figure.savefig(destination, format='png', facecolor=figure.get_facecolor(),
                        metadata={'Description': model['note']})
     return Path(destination)

@@ -25,6 +25,17 @@ python -m pvpledger_viewer.ui.app
 
 For a packaged release, open `PvPLedgerViewer.exe` in its application folder. Keep the entire `_internal` directory beside it. A Windows shortcut should target that EXE, use its folder as the working directory, and have no console launcher.
 
+## Appearance
+
+Warband is the default appearance. Choose Warband or Classic in Settings,
+save, then restart the viewer. Classic preserves the original colors and fonts.
+Missing or invalid theme preferences use Warband without resetting other settings.
+Warband uses bundled Cinzel for titles/headings and Segoe UI for body text;
+if its private Windows font registration is unavailable, headings use Georgia.
+No font is installed system-wide. The font and its SIL Open Font License are
+in `pvpledger_viewer/assets/fonts/`. Classic charts retain their original
+appearance; Warband charts follow the active palette.
+
 ## First run
 
 New profiles open optional local setup. You may enter a display name, discover a standard WoW installation, browse to a custom installation or SavedVariables directory, and select account/character addon files. Ctrl-click multiple source files. Choose **Use selected sources and list characters** to identify character-specific locations. Account-wide captures may require manual character identification.

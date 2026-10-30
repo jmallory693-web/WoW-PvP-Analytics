@@ -5,6 +5,7 @@ from .widgets import ScrollFrame
 from ..comparisons import METRICS, QUICK, paired_text
 from ..viewmodels import display
 from ..charts import RENDER_LOCK
+from .theme import palette, chart_palette
 
 
 class AdvancedComparison(ttk.Frame):
@@ -25,7 +26,7 @@ class AdvancedComparison(ttk.Frame):
         self.b = CharacterSearch(self.selectors, 'Character B / optional friend character')
         self.selectors.columnconfigure(0, weight=1); self.selectors.columnconfigure(1, weight=1)
         self.a.grid(row=0, column=0, sticky='ew', padx=(0, 5)); self.b.grid(row=0, column=1, sticky='ew')
-        self.mine = tk.Listbox(self.selectors, height=4, selectmode='extended', exportselection=False, bg='#0e1928', fg='#e7edf5', selectbackground='#304460')
+        self.mine = tk.Listbox(self.selectors, height=4, selectmode='extended', exportselection=False, bg=palette(self)['FIELD'], fg=palette(self)['TEXT'], selectbackground=palette(self)['LIST_SELECTION_BG'])
         options = ttk.Frame(self); options.pack(fill='x', pady=4)
         ttk.Label(options, text='Friend').pack(side='left')
         self.friend = ttk.Combobox(options, state='readonly', width=18); self.friend.pack(side='left', padx=4)
@@ -150,13 +151,13 @@ class AdvancedComparison(ttk.Frame):
             self.figure = Figure(figsize=(9, 2.3), dpi=100)
             self.canvas = FigureCanvasTkAgg(self.figure, master=self.holder); self.canvas.get_tk_widget().pack(fill='both', expand=True)
         with RENDER_LOCK:
-            draw(self.figure, self.model, self.metrics[:1]); self.canvas.draw_idle()
+            draw(self.figure, self.model, self.metrics[:1], palette=chart_palette(self)); self.canvas.draw_idle()
 
     def details(self):
         if not self.model:
             self.app.feedback('Choose participants and click Compare first.'); return
         dialog = tk.Toplevel(self); dialog.title('Comparison samples, coverage and paired matches'); dialog.geometry('1000x650')
-        text = tk.Text(dialog, wrap='word', bg='#0e1928', fg='#e7edf5'); scrollbar = ttk.Scrollbar(dialog, command=text.yview); scrollbar.pack(side='right', fill='y')
+        text = tk.Text(dialog, wrap='word', bg=palette(self)['FIELD'], fg=palette(self)['TEXT']); scrollbar = ttk.Scrollbar(dialog, command=text.yview); scrollbar.pack(side='right', fill='y')
         text.configure(yscrollcommand=scrollbar.set); text.pack(fill='both', expand=True)
         text.insert('end', self.model['scope'] + '\n' + self.model['note'] + '\n\nMean / median, supported n / games\n')
         for s in self.model['series']:

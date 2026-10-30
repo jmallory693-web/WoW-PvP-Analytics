@@ -1,7 +1,7 @@
 import json
 import tkinter as tk
 from tkinter import ttk
-from .theme import FIELD, TEXT
+from .theme import palette
 from .widgets import page_heading
 
 
@@ -33,7 +33,7 @@ class DiagnosticsView(ttk.Frame):
         page_heading(self, 'Diagnostics', 'Import recovery, source snapshots and errors in one place. Your WoW files are read-only.')
         ttk.Button(self, text='Copy diagnostic information', command=lambda: app.run_job('Copying diagnostics…', lambda: app.service.copy_diagnostics(app.config['wow_root']), lambda r: app.feedback('Diagnostic information copied.'))).pack(anchor='w', pady=(0, 10))
         box = ttk.Frame(self); box.pack(fill='both', expand=True)
-        self.text = tk.Text(box, bg=FIELD, fg=TEXT, insertbackground=TEXT, font=('Consolas', 10), wrap='word', relief='flat', padx=15, pady=15)
+        self.text = tk.Text(box, bg=palette(self)['FIELD'], fg=palette(self)['TEXT'], insertbackground=palette(self)['TEXT'], font=palette(self)['MONOSPACE_FONT'], wrap='word', relief='flat', padx=15, pady=15)
         scrollbar = ttk.Scrollbar(box, command=self.text.yview)
         self.text.configure(yscrollcommand=scrollbar.set)
         self.text.pack(side='left', fill='both', expand=True); scrollbar.pack(side='right', fill='y')

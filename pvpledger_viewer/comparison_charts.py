@@ -1,9 +1,10 @@
 """Separate metric axes and character/type series for advanced comparisons."""
 from .charts import RENDER_LOCK, COLORS
 from .comparisons import METRICS
+from .chart_style import apply_chart_palette
 
 
-def draw(figure, model, metrics):
+def draw(figure, model, metrics, *, palette=None):
     metrics = list(dict.fromkeys(metrics))
     if not metrics or any(m not in METRICS for m in metrics):
         raise ValueError('Select known comparison metrics')
@@ -42,17 +43,19 @@ def draw(figure, model, metrics):
             axis.set_xlabel('Match / rolling endpoint within each character and match type', color='#a3b2c5', fontsize=8)
             axis.set_ylabel(metric, color='#a3b2c5', fontsize=8)
             axis.tick_params(colors='#a3b2c5', labelsize=8); axis.grid(alpha=.12)
+        apply_chart_palette(figure, palette)
         figure.tight_layout(pad=2)
 
 
-def export_png(path, model, metrics):
+def export_png(path, model, metrics, *, palette=None):
     from matplotlib.figure import Figure
     from matplotlib.backends.backend_agg import FigureCanvasAgg
     from .archive import safe_destination
     path = safe_destination(path)
     with RENDER_LOCK:
         figure = Figure(figsize=(13, 4 * len(metrics)), dpi=120); FigureCanvasAgg(figure)
-        draw(figure, model, metrics)
-        figure.savefig(path, format='png', metadata={'Description': model['note']})
+        draw(figure, model, metrics, palette=palette)
+        options = {'facecolor': figure.get_facecolor()} if palette is not None else {}
+        figure.savefig(path, format='png', metadata={'Description': model['note']}, **options)
     return str(path)
 

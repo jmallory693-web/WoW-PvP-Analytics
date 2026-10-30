@@ -3,6 +3,7 @@ from tkinter import ttk, filedialog
 from ..trends import METRICS
 from ..charts import draw_chart, export_png, RENDER_LOCK
 from .widgets import page_heading
+from .theme import CHART_ANNOTATION_FONT_SIZE, TEXT as CHART_ANNOTATION_TEXT, palette, chart_palette
 
 
 class TrendsView(ttk.Frame):
@@ -47,7 +48,7 @@ class TrendsView(ttk.Frame):
         row = ttk.Frame(self.standard); row.pack(fill='x', pady=6)
         ttk.Label(row, text='Teammates\nCtrl-click multiple').pack(side='left')
         self.people = tk.Listbox(row, height=3, selectmode='extended', exportselection=False,
-                                 bg='#0e1928', fg='#e7edf5', selectbackground='#304460', width=25)
+                                 bg=palette(self)['FIELD'], fg=palette(self)['TEXT'], selectbackground=palette(self)['LIST_SELECTION_BG'], width=25)
         self.people.pack(side='left', padx=10)
         ttk.Checkbutton(row, text='Plot teammate comparisons', variable=self.teammate, command=self.redraw).pack(side='left')
         ttk.Button(row, text='Samples and gear groups…', command=self.show_details).pack(side='right')
@@ -117,10 +118,13 @@ class TrendsView(ttk.Frame):
             self.canvas = LockedCanvas(self.figure, master=self.holder)
             self.canvas.get_tk_widget().pack(fill='both', expand=True)
             self.canvas.mpl_connect('motion_notify_event', self.hover)
-        self.axis, self.lines = draw_chart(self.figure, self.model, self.metric.get(), self.teammate.get())
+        colors = chart_palette(self)
+        self.axis, self.lines = draw_chart(self.figure, self.model, self.metric.get(), self.teammate.get(), palette=colors)
         self.annotation = self.axis.annotate('', xy=(0, 0), xytext=(10, 12), textcoords='offset points',
-                                             bbox={'boxstyle': 'round', 'fc': '#e7edf5'}, fontsize=8)
+                                             bbox={'boxstyle': 'round', 'fc': CHART_ANNOTATION_TEXT}, fontsize=CHART_ANNOTATION_FONT_SIZE)
         self.annotation.set_visible(False)
+        from ..chart_style import style_annotation
+        style_annotation(self.annotation, colors)
         gear = []
         for group in self.model['series']:
             g = group['gear']; low, high = g['below'], g['at_or_above']
@@ -151,7 +155,7 @@ class TrendsView(ttk.Frame):
         if self.model is None:
             return
         dialog = tk.Toplevel(self); dialog.title('Trend samples and comparisons'); dialog.geometry('1000x650')
-        text = tk.Text(dialog, wrap='word', bg='#0e1928', fg='#e7edf5')
+        text = tk.Text(dialog, wrap='word', bg=palette(self)['FIELD'], fg=palette(self)['TEXT'])
         scroll = ttk.Scrollbar(dialog, command=text.yview); scroll.pack(side='right', fill='y')
         text.configure(yscrollcommand=scroll.set); text.pack(fill='both', expand=True)
         text.insert('end', self.summary_text + '\n\nOWNER PERFORMANCE WITH/WITHOUT TEAMMATES\nSelected owner characters combined within each labeled match type. A match appears once in the union.\n')
@@ -181,7 +185,8 @@ class TrendsView(ttk.Frame):
         if not path:
             return
         model, metric, teammate = self.model, self.metric.get(), self.teammate.get()
+        colors = chart_palette(self)
         def work():
             self.app.service._guard_export(path, self.app.config['wow_root'])
-            return export_png(path, model, metric, teammate)
+            return export_png(path, model, metric, teammate, palette=colors)
         self.app.run_job('Exporting chart…', work, lambda p: self.app.feedback(f'Chart saved to {p}'))

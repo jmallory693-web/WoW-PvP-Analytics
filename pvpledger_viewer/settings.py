@@ -8,7 +8,10 @@ import tempfile
 from .archive import default_home, safe_destination
 from .metrics import Filters
 
+THEME_NAMES = ('Warband', 'Classic')
+
 DEFAULTS = {'geometry': '1280x720', 'wow_root': '', 'export_dir': '', 'report_limit': 20,
+            'theme': 'Warband',
             'view': 'Home', 'filters': asdict(Filters()), 'trend_window': 20, 'trend_threshold': 344,
             'trend_metric': 'Win rate', 'trend_teammates': [], 'source_timezone': 'UTC',
             'source_locations': [], 'source_selection_explicit': False,
@@ -20,6 +23,8 @@ VIEWS = ('Home', 'Match History', 'Character Comparison', 'Allies', 'Diagnostics
 def validate_settings(data):
     from copy import deepcopy
     result = deepcopy(DEFAULTS) | data
+    if not isinstance(result['theme'], str) or result['theme'] not in THEME_NAMES:
+        result['theme'] = 'Warband'
     if not isinstance(result['sync_enabled'], bool):
         raise ValueError('Automatic synchronization must be enabled or disabled')
     if type(result['sync_interval']) is not int or result['sync_interval'] < 30:
